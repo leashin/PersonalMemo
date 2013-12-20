@@ -1,5 +1,7 @@
 <resources>
 
-    <string name="app_name">QuanZi</string>
+    <string name="app_name">圈子</string>
+    <string name="back_pressed_to_exit">再按一次退出程序</string>
+    <string name="back_pressed_to_background">再按一次后台运行</string>
 
 </resources>
