@@ -22,14 +22,9 @@ public class SplashActivity extends AbsActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
-		Intent intent = new Intent();
-		intent.setClass(getBaseContext(), MainActivity.class);
-		startActivity(intent);
-		finish();
+		initAnimation();
 
-		// initAnimation();
-		//
-		// mSplashImgv.startAnimation(mSplashAnimation);
+		mSplashImgv.startAnimation(mSplashAnimation);
 	}
 
 	@Override

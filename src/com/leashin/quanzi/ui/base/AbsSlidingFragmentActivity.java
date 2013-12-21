@@ -26,12 +26,13 @@ public abstract class AbsSlidingFragmentActivity extends
 		// getSupportFragmentManager().beginTransaction()
 		// .replace(R.id.fl_behind_right, new Fragment()).commit();
 
-//		FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-//
-//		mFragment = new Fragment();
-//
-//		t.replace(R.id.fl_behind, mFragment);
-//		t.commit();
+		// FragmentTransaction t =
+		// getSupportFragmentManager().beginTransaction();
+		//
+		// mFragment = new Fragment();
+		//
+		// t.replace(R.id.fl_behind, mFragment);
+		// t.commit();
 
 		SlidingMenu sm = getSlidingMenu();
 		sm.setShadowWidthRes(R.dimen.shadow_width);
@@ -75,6 +76,13 @@ public abstract class AbsSlidingFragmentActivity extends
 	protected void onDestroy() {
 		super.onDestroy();
 		Logs.d(LIFECYCLE, this + ": onDestroy");
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		Logs.d(LIFECYCLE, this + ": onSaveInstanceState");
 	}
 
 	@Override

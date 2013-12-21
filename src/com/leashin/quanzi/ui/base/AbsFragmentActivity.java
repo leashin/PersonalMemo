@@ -1,11 +1,11 @@
 package com.leashin.quanzi.ui.base;
 
-import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.leashin.quanzi.utils.Logs;
 
 import android.os.Bundle;
 
-public abstract class AbsActivity extends SherlockActivity {
+public abstract class AbsFragmentActivity extends SherlockFragmentActivity {
 	private static final String LIFECYCLE = "ActivityLifecycle";
 
 	@Override
