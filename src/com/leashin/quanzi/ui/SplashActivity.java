@@ -20,6 +20,8 @@ public class SplashActivity extends AbsActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		getSupportActionBar().hide();
+
 		setContentView(R.layout.activity_splash);
 
 		initAnimation();

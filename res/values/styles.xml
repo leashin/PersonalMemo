@@ -2,19 +2,33 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.    -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="actionBarStyle">@style/Widget.DEMO.ActionBar</item>
+    </style>
+
+    <!-- 标题栏的样式 -->
+    <style name="Widget.DEMO.ActionBar" parent="Widget.Sherlock.ActionBar.Solid">
+        <item name="background">@drawable/title_bg_blue</item>
+        <!-- <item name="backgroundStacked">#1791d2</item> -->
+        <!-- <item name="backgroundSplit">#1791d2</item> -->
+        <!-- <item name="titleAlign">center</item> -->
+        <item name="titleTextStyle">@style/MY.Widget.ActionBar.Title</item>
+    </style>
+
+    <style name="MY.Widget.ActionBar.Title" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

@@ -10,4 +10,19 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher" />
 
+    <Button
+        android:id="@+id/btn_open_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="left" />
+
+    <Button
+        android:id="@+id/btn_open_right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_open_left"
+        android:layout_margin="8dp"
+        android:text="right" />
+
 </RelativeLayout>

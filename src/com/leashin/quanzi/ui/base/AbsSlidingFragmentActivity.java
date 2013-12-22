@@ -3,7 +3,11 @@ package com.leashin.quanzi.ui.base;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
+import android.widget.TextView;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.LayoutParams;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.leashin.quanzi.R;
@@ -13,33 +17,33 @@ public abstract class AbsSlidingFragmentActivity extends
 		SlidingFragmentActivity {
 	private static final String LIFECYCLE = "SlidingFragmentActivityLifecycle";
 
-	private Fragment mFragment;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		Logs.d(LIFECYCLE, this + ": onCreate");
 
-		setBehindContentView(R.layout.behind_frame);
+		initSlidingMenu();
+		initActionBar();
+	}
 
-		// getSupportFragmentManager().beginTransaction()
-		// .replace(R.id.fl_behind_right, new Fragment()).commit();
+	public void setCenterTitle(int resId) {
+		setCenterTitle(getString(resId));
+	}
 
-		// FragmentTransaction t =
-		// getSupportFragmentManager().beginTransaction();
-		//
-		// mFragment = new Fragment();
-		//
-		// t.replace(R.id.fl_behind, mFragment);
-		// t.commit();
+	public void setCenterTitle(CharSequence text) {
+		ActionBar.LayoutParams lp = new ActionBar.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		lp.gravity = Gravity.CENTER;
 
-		SlidingMenu sm = getSlidingMenu();
-		sm.setShadowWidthRes(R.dimen.shadow_width);
-		sm.setShadowDrawable(R.drawable.shadow_left);
-		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-		sm.setFadeDegree(0.35f);
-		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		TextView titleTv = new TextView(this);
+
+		titleTv.setText(text);
+		titleTv.setLayoutParams(lp);
+		titleTv.setTextAppearance(this, R.style.MY_Widget_ActionBar_Title);
+
+		getSupportActionBar().setDisplayShowCustomEnabled(true);
+		getSupportActionBar().setCustomView(titleTv);
 	}
 
 	@Override
@@ -90,6 +94,26 @@ public abstract class AbsSlidingFragmentActivity extends
 		super.setContentView(id);
 		initViews();
 		setListeners();
+	}
+
+	/**
+	 * 初始化actionbar通用设置, 不需要自己调用
+	 */
+	protected void initActionBar() {
+		ActionBar ab = getSupportActionBar();
+		ab.setDisplayShowTitleEnabled(false);
+		ab.setDisplayUseLogoEnabled(false);
+	}
+
+	/**
+	 * 初始化slidingmenu通用设置, 不需要自己调用
+	 */
+	protected void initSlidingMenu() {
+		SlidingMenu sm = getSlidingMenu();
+		sm.setMode(SlidingMenu.LEFT_RIGHT);
+		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+		sm.setShadowWidthRes(R.dimen.shadow_width);
+		sm.setFadeDegree(0.5f);
 	}
 
 	/**
