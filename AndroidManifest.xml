@@ -27,6 +27,7 @@
         <activity
             android:name="com.leashin.quanzi.ui.main.MainActivity"
             android:launchMode="singleTop" />
+        <activity android:name="com.leashin.quanzi.ui.main.DetailActivity" />
     </application>
 
 </manifest>

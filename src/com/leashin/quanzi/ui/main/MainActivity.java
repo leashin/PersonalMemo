@@ -8,6 +8,7 @@ import com.leashin.quanzi.App;
 import com.leashin.quanzi.R;
 import com.leashin.quanzi.ui.adapter.ChecklistAdapter;
 import com.leashin.quanzi.ui.base.AbsSlidingFragmentActivity;
+import com.leashin.quanzi.ui.main.TestFragment.OnFragmentDetachListener;
 import com.leashin.quanzi.utils.PixelUtils;
 
 import android.content.Context;
@@ -20,12 +21,16 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AbsSlidingFragmentActivity {
+public class MainActivity extends AbsSlidingFragmentActivity implements
+		OnFragmentDetachListener {
 
 	private SlidingMenu mSlidingMenu;
 	private ActionBar mActionBar;
 
 	private ListView mChecklistLv;
+
+	private TestFragment mFragment;
+	private OtherFragment mFragment2;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,10 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 		setBehindContentView(R.layout.slidingmenu_first);
 		setContentView(R.layout.activity_main);
 		setTitle(R.string.app_name);
+
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.replace(R.id.fragment_test, TestFragment.newInstance("haha"));
+		ft.commit();
 	}
 
 	@Override
@@ -107,15 +116,6 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 				// TODO Auto-generated method stub
 				Toast.makeText(MainActivity.this, position + "±»µã»÷",
 						Toast.LENGTH_SHORT).show();
-				FragmentTransaction ft = getSupportFragmentManager()
-						.beginTransaction();
-
-				DetailFragment newFragment = DetailFragment
-						.newInstance(position);
-
-				ft.replace(R.id.fragment_test, newFragment);
-				ft.addToBackStack(null);
-				ft.commit();
 			}
 		});
 	}
@@ -158,6 +158,10 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 		boolean b = sp.getBoolean(App.key.SP_BACKGROUND_ENABLED, false);
 
 		return b;
+	}
+
+	@Override
+	public void onFragmentDetach(int tag) {
 	}
 
 }
