@@ -3,7 +3,7 @@ package com.leashin.quanzi;
 public final class App {
 	public static final class key {
 		public static final String SP_RUN_ON_BACKGROUND = "SP_RUN_ON_BACKGROUND";
-		public static final String SP_BACKGROUND_ENABLED = "SP_ALLOW_BACK_RUNNING";
+		public static final String SP_BACKGROUND_ENABLED = "SP_BACKGROUND_ENABLED";
 	}
 
 	public static final class path {

@@ -2,6 +2,7 @@ package com.leashin.quanzi.ui;
 
 import com.leashin.quanzi.R;
 import com.leashin.quanzi.ui.base.AbsActivity;
+import com.leashin.quanzi.ui.main.MainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;

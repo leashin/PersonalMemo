@@ -1,29 +1,31 @@
-package com.leashin.quanzi.ui;
+package com.leashin.quanzi.ui.main;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.leashin.quanzi.App;
 import com.leashin.quanzi.R;
+import com.leashin.quanzi.ui.adapter.ChecklistAdapter;
 import com.leashin.quanzi.ui.base.AbsSlidingFragmentActivity;
 import com.leashin.quanzi.utils.PixelUtils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AbsSlidingFragmentActivity {
 
 	private SlidingMenu mSlidingMenu;
 	private ActionBar mActionBar;
-	private Button mLeftBtn;
-	private Button mRightBtn;
+
+	private ListView mChecklistLv;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.slidingmenu_first);
 		setContentView(R.layout.activity_main);
-		setTitle("备忘录");
+		setTitle(R.string.app_name);
 	}
 
 	@Override
@@ -91,43 +93,29 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 
 	@Override
 	protected void initViews() {
-		mLeftBtn = (Button) findViewById(R.id.btn_open_left);
-		mRightBtn = (Button) findViewById(R.id.btn_open_right);
+		mChecklistLv = (ListView) findViewById(R.id.lv_checklist);
+		mChecklistLv.setAdapter(new ChecklistAdapter(this));
 	}
 
 	@Override
 	protected void setListeners() {
-		mSlidingMenu.setOnOpenListener(new OnOpenListener() {
-			@Override
-			public void onOpen() {
-				Toast.makeText(getBaseContext(), "打开左边", Toast.LENGTH_SHORT)
-						.show();
-			}
-		});
-
-		mSlidingMenu.setSecondaryOnOpenListner(new OnOpenListener() {
-			@Override
-			public void onOpen() {
-				Toast.makeText(getBaseContext(), "打开右边", Toast.LENGTH_SHORT)
-						.show();
-			}
-		});
-
-		mLeftBtn.setOnClickListener(new OnClickListener() {
+		mChecklistLv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onClick(View v) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				// TODO Auto-generated method stub
-				mSlidingMenu.showMenu();
-			}
-		});
+				Toast.makeText(MainActivity.this, position + "被点击",
+						Toast.LENGTH_SHORT).show();
+				FragmentTransaction ft = getSupportFragmentManager()
+						.beginTransaction();
 
-		mRightBtn.setOnClickListener(new OnClickListener() {
+				DetailFragment newFragment = DetailFragment
+						.newInstance(position);
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				mSlidingMenu.showSecondaryMenu();
+				ft.replace(R.id.fragment_test, newFragment);
+				ft.addToBackStack(null);
+				ft.commit();
 			}
 		});
 	}
@@ -158,11 +146,16 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 		}
 	}
 
+	/**
+	 * 是否允许程序后台运行
+	 * 
+	 * @return true允许 otherwise不允许
+	 */
 	private boolean isBackgroundEnabled() {
 		SharedPreferences sp = getSharedPreferences(App.config.SP_CONFIG,
 				Context.MODE_PRIVATE);
 
-		boolean b = sp.getBoolean(App.key.SP_RUN_ON_BACKGROUND, true);
+		boolean b = sp.getBoolean(App.key.SP_BACKGROUND_ENABLED, false);
 
 		return b;
 	}

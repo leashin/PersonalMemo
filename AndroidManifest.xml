@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.leashin.quanzi"
+    android:installLocation="auto"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -10,6 +11,7 @@
     <application
         android:name="com.leashin.quanzi.MyApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -23,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.leashin.quanzi.ui.MainActivity"
+            android:name="com.leashin.quanzi.ui.main.MainActivity"
             android:launchMode="singleTop" />
     </application>
 

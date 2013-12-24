@@ -90,5 +90,4 @@ public class AbsFragment extends SherlockFragment {
 		super.onSaveInstanceState(outState);
 		Logs.d(LIFECYCLE, this + ": onSaveInstanceState");
 	}
-
 }

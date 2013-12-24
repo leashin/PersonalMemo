@@ -3,26 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imgv_test"
+    <ListView
+        android:id="@+id/lv_checklist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher" />
+        android:layout_height="match_parent" >
+    </ListView>
 
-    <Button
-        android:id="@+id/btn_open_left"
+    <FrameLayout
+        android:id="@+id/fragment_test"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="left" />
-
-    <Button
-        android:id="@+id/btn_open_right"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_open_left"
-        android:layout_margin="8dp"
-        android:text="right" />
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
