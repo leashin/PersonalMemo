@@ -5,7 +5,7 @@ import com.leashin.quanzi.utils.Logs;
 
 import android.os.Bundle;
 
-public abstract class AbsActivity extends SherlockActivity {
+public class AbsActivity extends SherlockActivity {
 	private static final String LIFECYCLE = "ActivityLifecycle";
 
 	@Override
@@ -71,10 +71,12 @@ public abstract class AbsActivity extends SherlockActivity {
 	/**
 	 * 初始化view, 不需要自己调用
 	 */
-	protected abstract void initViews();
+	protected void initViews() {
+	};
 
 	/**
 	 * 设置监听器，实现该方法即可，不需要自己調用
 	 */
-	protected abstract void setListeners();
+	protected void setListeners() {
+	}
 }

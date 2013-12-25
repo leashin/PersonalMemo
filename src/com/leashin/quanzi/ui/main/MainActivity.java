@@ -8,12 +8,14 @@ import com.leashin.quanzi.App;
 import com.leashin.quanzi.R;
 import com.leashin.quanzi.ui.adapter.ChecklistAdapter;
 import com.leashin.quanzi.ui.base.AbsSlidingFragmentActivity;
-import com.leashin.quanzi.ui.main.TestFragment.OnFragmentDetachListener;
+import com.leashin.quanzi.ui.base.FragmentIntent;
 import com.leashin.quanzi.utils.PixelUtils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,33 +23,27 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AbsSlidingFragmentActivity implements
-		OnFragmentDetachListener {
+public class MainActivity extends AbsSlidingFragmentActivity {
 
 	private SlidingMenu mSlidingMenu;
 	private ActionBar mActionBar;
 
 	private ListView mChecklistLv;
 
-	private TestFragment mFragment;
-	private OtherFragment mFragment2;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.slidingmenu_first);
 		setContentView(R.layout.activity_main);
 		setTitle(R.string.app_name);
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		ft.replace(R.id.fragment_test, TestFragment.newInstance("haha"));
+		ft.replace(R.id.fragment_container, TestFragment.newInstance("haha"));
 		ft.commit();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
 		getSupportMenuInflater().inflate(R.menu.main, menu);
 
 		return super.onCreateOptionsMenu(menu);
@@ -113,7 +109,6 @@ public class MainActivity extends AbsSlidingFragmentActivity implements
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
 				Toast.makeText(MainActivity.this, position + "±»µã»÷",
 						Toast.LENGTH_SHORT).show();
 			}
@@ -124,24 +119,31 @@ public class MainActivity extends AbsSlidingFragmentActivity implements
 
 	@Override
 	public void onBackPressed() {
-		long msec = System.currentTimeMillis();
+		FragmentManager fm = getSupportFragmentManager();
 
-		if (msec - mFirstBackPressedTime < App.config.BACK_PRESSED_TIMEOUT) {
-			if (isBackgroundEnabled()) {
-				moveTaskToBack(false);
-			} else {
-				super.onBackPressed();
-			}
+		if (fm.getBackStackEntryCount() > 0) {
+			super.onBackPressed();
 		} else {
-			mFirstBackPressedTime = msec;
+			long msec = System.currentTimeMillis();
 
-			if (isBackgroundEnabled()) {
-				Toast.makeText(getBaseContext(),
-						R.string.back_pressed_to_background, Toast.LENGTH_SHORT)
-						.show();
+			if (msec - mFirstBackPressedTime < App.config.BACK_PRESSED_TIMEOUT) {
+				if (isBackgroundEnabled()) {
+					moveTaskToBack(false);
+				} else {
+					super.onBackPressed();
+				}
 			} else {
-				Toast.makeText(getBaseContext(), R.string.back_pressed_to_exit,
-						Toast.LENGTH_SHORT).show();
+				mFirstBackPressedTime = msec;
+
+				if (isBackgroundEnabled()) {
+					Toast.makeText(getBaseContext(),
+							R.string.back_pressed_to_background,
+							Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getBaseContext(),
+							R.string.back_pressed_to_exit, Toast.LENGTH_SHORT)
+							.show();
+				}
 			}
 		}
 	}
@@ -161,7 +163,22 @@ public class MainActivity extends AbsSlidingFragmentActivity implements
 	}
 
 	@Override
-	public void onFragmentDetach(int tag) {
+	public void startFragment(FragmentIntent fi) {
+		startFragment(fi, false);
 	}
 
+	@Override
+	public void startFragment(FragmentIntent fi, boolean backToStack) {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+		Fragment newFragment = Fragment.instantiate(this, fi.getFragmentClass()
+				.getName(), fi.getExtras());
+
+		ft.replace(R.id.fragment_container, newFragment);
+		if (backToStack) {
+			ft.addToBackStack(null);
+		}
+
+		ft.commit();
+	}
 }

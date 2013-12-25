@@ -1,8 +1,6 @@
 package com.leashin.quanzi.ui.base;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.widget.TextView;
 
@@ -13,13 +11,12 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.leashin.quanzi.R;
 import com.leashin.quanzi.utils.Logs;
 
-public abstract class AbsSlidingFragmentActivity extends
-		SlidingFragmentActivity {
+public class AbsSlidingFragmentActivity extends SlidingFragmentActivity
+		implements FragmentCallback {
 	private static final String LIFECYCLE = "SlidingFragmentActivityLifecycle";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		Logs.d(LIFECYCLE, this + ": onCreate");
 
@@ -84,7 +81,6 @@ public abstract class AbsSlidingFragmentActivity extends
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		Logs.d(LIFECYCLE, this + ": onSaveInstanceState");
 	}
@@ -116,13 +112,41 @@ public abstract class AbsSlidingFragmentActivity extends
 		sm.setFadeDegree(0.5f);
 	}
 
+	public AbsSlidingFragmentActivity getBaseActivity() {
+		return this;
+	}
+
 	/**
 	 * 初始化view, 不需要自己调用
 	 */
-	protected abstract void initViews();
+	protected void initViews() {
+	}
 
 	/**
 	 * 设置监听器，实现该方法即可，不需要自己調用
 	 */
-	protected abstract void setListeners();
+	protected void setListeners() {
+	}
+
+	/**
+	 * 在fragment容器启动一个新的fragment
+	 * 
+	 * @param fi
+	 *            startFragment(fi, false)
+	 */
+	@Override
+	public void startFragment(FragmentIntent fi) {
+		startFragment(fi, false);
+	}
+
+	/**
+	 * 
+	 * @param fi
+	 *            类似于Intent
+	 * @param backToStack
+	 *            是否可以加入到fragment栈中
+	 */
+	@Override
+	public void startFragment(FragmentIntent fi, boolean backToStack) {
+	}
 }

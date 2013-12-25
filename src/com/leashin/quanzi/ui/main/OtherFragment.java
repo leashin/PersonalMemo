@@ -11,13 +11,11 @@ import android.widget.Toast;
 
 import com.leashin.quanzi.R;
 import com.leashin.quanzi.ui.base.AbsFragment;
-import com.leashin.quanzi.ui.main.TestFragment.OnFragmentDetachListener;
 
 public class OtherFragment extends AbsFragment {
 
 	private Button mBackBtn;
-	private OnFragmentDetachListener l;
-	
+
 	public static OtherFragment newInstance(String title) {
 		OtherFragment f = new OtherFragment();
 		Bundle args = new Bundle();
@@ -26,6 +24,12 @@ public class OtherFragment extends AbsFragment {
 		f.setArguments(args);
 
 		return f;
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		// TODO Auto-generated method stub
+		super.onAttach(activity);
 	}
 
 	@Override
@@ -40,17 +44,11 @@ public class OtherFragment extends AbsFragment {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(getActivity(), "·µ»Ø", Toast.LENGTH_SHORT).show();
-				l.onFragmentDetach(2);
+				getActivity().getSupportFragmentManager().popBackStack();
 			}
 		});
 
 		return v;
 	}
-	
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		l = (OnFragmentDetachListener) activity;
-	}
-	
+
 }

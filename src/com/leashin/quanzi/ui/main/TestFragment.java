@@ -1,8 +1,9 @@
 package com.leashin.quanzi.ui.main;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,11 +13,14 @@ import android.widget.Toast;
 
 import com.leashin.quanzi.R;
 import com.leashin.quanzi.ui.base.AbsFragment;
+import com.leashin.quanzi.ui.base.FragmentCallback;
+import com.leashin.quanzi.ui.base.FragmentIntent;
+import com.leashin.quanzi.utils.Logs;
 
 public class TestFragment extends AbsFragment {
 
 	private Button mStartOtherButton;
-	private OnFragmentDetachListener l;
+	private FragmentCallback mFragmentCallback;
 
 	public static TestFragment newInstance(String title) {
 		TestFragment f = new TestFragment();
@@ -26,6 +30,22 @@ public class TestFragment extends AbsFragment {
 		f.setArguments(args);
 
 		return f;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		if (savedInstanceState == null) {
+			FragmentTransaction ft = getChildFragmentManager()
+					.beginTransaction();
+
+			Fragment newFragment = OtherFragment.newInstance("sdfsf");
+
+			ft.add(R.id.fragment_container, newFragment);
+
+			ft.commit();
+		}
 	}
 
 	@Override
@@ -40,26 +60,21 @@ public class TestFragment extends AbsFragment {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(getActivity(), "¿ªÊ¼", Toast.LENGTH_SHORT).show();
-				l.onFragmentDetach(1);
-				Intent intent = new Intent();
-				intent.setClass(getActivity().getBaseContext(),
-						DetailActivity.class);
-				getActivity().startActivity(intent);
+
+				FragmentIntent fi = new FragmentIntent(OtherFragment.class);
+				mFragmentCallback.startFragment(fi, true);
 			}
 		});
 
+		Logs.d("SherlockFragmentLifecycle", this + ": onCreateView");
+
 		return v;
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		l = (OnFragmentDetachListener) activity;
+		mFragmentCallback = (FragmentCallback) activity;
 	}
 
-	public interface OnFragmentDetachListener {
-		public void onFragmentDetach(int tag);
-	}
-	
-	
 }
