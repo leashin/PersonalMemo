@@ -1,11 +1,8 @@
 package com.leashin.quanzi.ui.base;
 
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.LayoutParams;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.leashin.quanzi.R;
@@ -22,25 +19,6 @@ public class AbsSlidingFragmentActivity extends SlidingFragmentActivity
 
 		initSlidingMenu();
 		initActionBar();
-	}
-
-	public void setCenterTitle(int resId) {
-		setCenterTitle(getString(resId));
-	}
-
-	public void setCenterTitle(CharSequence text) {
-		ActionBar.LayoutParams lp = new ActionBar.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		lp.gravity = Gravity.CENTER;
-
-		TextView titleTv = new TextView(this);
-
-		titleTv.setText(text);
-		titleTv.setLayoutParams(lp);
-		titleTv.setTextAppearance(this, R.style.MY_Widget_ActionBar_Title);
-
-		getSupportActionBar().setDisplayShowCustomEnabled(true);
-		getSupportActionBar().setCustomView(titleTv);
 	}
 
 	@Override
@@ -96,9 +74,9 @@ public class AbsSlidingFragmentActivity extends SlidingFragmentActivity
 	 * 初始化actionbar通用设置, 不需要自己调用
 	 */
 	protected void initActionBar() {
-		ActionBar ab = getSupportActionBar();
-		ab.setDisplayShowTitleEnabled(false);
-		ab.setDisplayUseLogoEnabled(false);
+//		ActionBar ab = getSupportActionBar();
+//		ab.setDisplayShowTitleEnabled(true);
+//		ab.setDisplayUseLogoEnabled(true);
 	}
 
 	/**

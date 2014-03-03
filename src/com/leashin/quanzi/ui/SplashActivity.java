@@ -13,6 +13,8 @@ import android.widget.ImageView;
 
 public class SplashActivity extends AbsActivity {
 
+	private static final boolean DEBUG = true;
+
 	private ImageView mSplashImgv;
 
 	private Animation mSplashAnimation;
@@ -24,6 +26,13 @@ public class SplashActivity extends AbsActivity {
 		getSupportActionBar().hide();
 
 		setContentView(R.layout.activity_splash);
+
+		if (DEBUG) {
+			Intent intent = new Intent();
+			intent.setClass(getBaseContext(), MainActivity.class);
+			startActivity(intent);
+			finish();
+		}
 
 		initAnimation();
 

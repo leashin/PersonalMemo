@@ -3,10 +3,46 @@
     <!--
         Base application theme for API 14+. This theme completely replaces
         AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        res/values-v11/styles.xml on API 14+ devices.    -->
+    <style name="AppTheme" parent="@android:Theme.Holo.Light">
         <!-- API 14 theme customizations can go here. -->
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:windowBackground">@color/default_background_color</item>
+        <item name="android:dropDownListViewStyle">@style/ListViewDropdownStyle</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:popupMenuStyle">@style/MemoryPopupMenuStyle</item>
+        <item name="android:actionBarWidgetTheme">@style/ActionBarTheme</item>
+        <item name="android:selectableItemBackground">@drawable/action_bar_item_background</item>  
+    </style>
+
+
+    <style name="MemoryPopupMenuStyle" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item name="android:background">@*android:color/background_light</item>
+    </style>
+
+    <style name="ListViewDropdownStyle" parent="@android:style/Widget.ListView.DropDown">
+        <item name="android:background">@*android:color/background_light</item>
+        <item name="android:listSelector">?android:listChoiceBackgroundIndicator</item>
+    </style>
+
+    <style name="ActionBarTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:dropDownListViewStyle">@style/ListViewDropdownStyle</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:popupMenuStyle">@style/MemoryPopupMenuStyle</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/ab_solid</item>
+        <item name="android:displayOptions">useLogo|showHome</item>
+        <item name="android:titleTextStyle">@style/ActionBarTitleFont</item>
+    </style>
+
+    <style name="ActionBarTitleFont" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/primary_text_color</item>
     </style>
 
 </resources>

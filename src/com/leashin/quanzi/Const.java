@@ -1,6 +1,6 @@
 package com.leashin.quanzi;
 
-public final class App {
+public final class Const {
 	public static final class key {
 		public static final String SP_RUN_ON_BACKGROUND = "SP_RUN_ON_BACKGROUND";
 		public static final String SP_BACKGROUND_ENABLED = "SP_BACKGROUND_ENABLED";

@@ -2,33 +2,52 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.    -->
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+            backward-compatibility can go here.        -->
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
-
+    <style name="AppTheme" parent="Theme.Sherlock.Light">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="actionBarStyle">@style/Widget.DEMO.ActionBar</item>
+        <item name="textColorPrimary">@color/primary_text_color</item>
+        <item name="android:windowBackground">@color/default_background_color</item>
+        <item name="dropDownListViewStyle">@style/ListViewDropdownStyle</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="popupMenuStyle">@style/MemoryPopupMenuStyle</item>
+        <item name="actionBarWidgetTheme">@style/ActionBarTheme</item>
+        <item name="selectableItemBackground">@drawable/action_bar_item_background</item>  
+    </style>
+    
+    <style name="ListViewDropdownStyle" parent="@android:style/Widget.ListView.DropDown">
+        <item name="android:background">@*android:color/background_light</item>
+        <item name="android:listSelector">?android:listChoiceBackgroundIndicator</item>
+    </style><style name="ActionBarTheme" parent="Theme.Sherlock.Light">
+        <item name="textColorPrimary">@color/primary_text_color</item>
+        <item name="dropDownListViewStyle">@style/ListViewDropdownStyle</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="popupMenuStyle">@style/MemoryPopupMenuStyle</item>
+    </style>
+    
+    <style name="MemoryPopupMenuStyle" parent="Widget.Sherlock.Light.ListPopupWindow">
+        <item name="android:background">@*android:color/background_light</item>
     </style>
 
-    <!-- 标题栏的样式 -->
-    <style name="Widget.DEMO.ActionBar" parent="Widget.Sherlock.ActionBar.Solid">
-        <item name="background">@drawable/title_bg_blue</item>
-        <!-- <item name="backgroundStacked">#1791d2</item> -->
-        <!-- <item name="backgroundSplit">#1791d2</item> -->
-        <!-- <item name="titleAlign">center</item> -->
-        <item name="titleTextStyle">@style/MY.Widget.ActionBar.Title</item>
+    <style name="ActionBarStyle" parent="Widget.Sherlock.Light.ActionBar">
+        <item name="background">@drawable/ab_solid</item>
+         <item name="displayOptions">useLogo|showHome</item>
+        <item name="titleTextStyle">@style/ActionBarTitleFont</item>
     </style>
 
-    <style name="MY.Widget.ActionBar.Title" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
-        <item name="android:textColor">@android:color/white</item>
+    <style name="ActionBarTitleFont" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/primary_text_color</item>
     </style>
 
 </resources>
