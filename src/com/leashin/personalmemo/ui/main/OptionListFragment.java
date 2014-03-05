@@ -1,9 +1,9 @@
-package com.leashin.quanzi.ui.main;
+package com.leashin.personalmemo.ui.main;
 
-import com.leashin.quanzi.R;
-import com.leashin.quanzi.ui.base.BaseFragmentActivity;
-import com.leashin.quanzi.utils.Logs;
-import com.leashin.quanzi.widget.OptionView;
+import com.leashin.personalmemo.R;
+import com.leashin.personalmemo.ui.base.BaseFragmentActivity;
+import com.leashin.personalmemo.utils.Logs;
+import com.leashin.personalmemo.widget.OptionView;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;

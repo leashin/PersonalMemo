@@ -1,4 +1,4 @@
-package com.leashin.quanzi;
+package com.leashin.personalmemo;
 
 public final class Const {
 	public static final class key {

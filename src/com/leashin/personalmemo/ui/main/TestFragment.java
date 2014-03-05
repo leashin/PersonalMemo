@@ -1,4 +1,4 @@
-package com.leashin.quanzi.ui.main;
+package com.leashin.personalmemo.ui.main;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.leashin.quanzi.R;
-import com.leashin.quanzi.ui.base.BaseFragment;
+import com.leashin.personalmemo.R;
+import com.leashin.personalmemo.ui.base.BaseFragment;
 
 public class TestFragment extends BaseFragment {
 	private TextView mArgsTv;

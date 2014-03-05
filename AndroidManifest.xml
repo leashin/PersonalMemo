@@ -1,22 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.leashin.quanzi"
+    package="com.leashin.personalmemo"
     android:installLocation="auto"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <application
-        android:name="com.leashin.quanzi.MyApplication"
+        android:name="com.leashin.personalmemo.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.leashin.quanzi.ui.SplashActivity"
+            android:name="com.leashin.personalmemo.ui.SplashActivitytivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.leashin.quanzi.ui.main.MainActivity"
+            android:name="com.leashin.personalmemo.ui.main.MainActivityMainActivity"
             android:launchMode="singleTop" />
-        <activity android:name="com.leashin.quanzi.ui.main.DetailActivity" />
+        <activity android:name="com.leashin.personalmemo.ui.main.DetailActivitytailActivity" />
     </application>
 
 </manifest>

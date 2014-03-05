@@ -4,3 +4,5 @@
 /.classpath
 /.settings
 /assets
+/proguard
+/project.properties

@@ -1,11 +1,11 @@
-package com.leashin.quanzi.ui.base;
+package com.leashin.personalmemo.ui.base;
 
 import android.os.Bundle;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
-import com.leashin.quanzi.R;
-import com.leashin.quanzi.utils.Logs;
+import com.leashin.personalmemo.R;
+import com.leashin.personalmemo.utils.Logs;
 
 public class BaseSlidingFragmentActivity extends SlidingFragmentActivity {
 	private static final String LIFECYCLE = "SlidingFragmentActivityLifecycle";

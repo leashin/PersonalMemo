@@ -1,8 +1,8 @@
-package com.leashin.quanzi.utils;
+package com.leashin.personalmemo.utils;
 
 import android.content.Context;
 
-import com.leashin.quanzi.MyApplication;
+import com.leashin.personalmemo.MyApplication;
 
 public class PixelUtils {
 

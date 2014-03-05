@@ -1,7 +1,7 @@
-package com.leashin.quanzi.widget;
+package com.leashin.personalmemo.widget;
 
-import com.leashin.quanzi.R;
-import com.leashin.quanzi.utils.Logs;
+import com.leashin.personalmemo.R;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.content.Context;
 import android.util.AttributeSet;

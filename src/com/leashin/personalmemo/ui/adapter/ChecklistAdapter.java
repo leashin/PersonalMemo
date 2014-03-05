@@ -1,6 +1,6 @@
-package com.leashin.quanzi.ui.adapter;
+package com.leashin.personalmemo.ui.adapter;
 
-import com.leashin.quanzi.R;
+import com.leashin.personalmemo.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;

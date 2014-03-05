@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leashin.quanzi.app;
+package com.leashin.personalmemo.app;
 
 import android.annotation.TargetApi;
 import android.content.res.TypedArray;

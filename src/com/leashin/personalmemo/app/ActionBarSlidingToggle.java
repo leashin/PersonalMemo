@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leashin.quanzi.app;
+package com.leashin.personalmemo.app;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;

@@ -1,4 +1,4 @@
-package com.leashin.quanzi.ui.main;
+package com.leashin.personalmemo.ui.main;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -6,11 +6,11 @@ import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnMenuSlideListener;
-import com.leashin.quanzi.Const;
-import com.leashin.quanzi.R;
-import com.leashin.quanzi.app.ActionBarSlidingToggle;
-import com.leashin.quanzi.ui.base.BaseFragmentActivity;
-import com.leashin.quanzi.utils.Logs;
+import com.leashin.personalmemo.Const;
+import com.leashin.personalmemo.R;
+import com.leashin.personalmemo.app.ActionBarSlidingToggle;
+import com.leashin.personalmemo.ui.base.BaseFragmentActivity;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.content.Context;
 import android.content.SharedPreferences;

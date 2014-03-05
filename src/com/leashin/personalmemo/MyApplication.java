@@ -1,6 +1,6 @@
-package com.leashin.quanzi;
+package com.leashin.personalmemo;
 
-import com.leashin.quanzi.utils.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.app.Application;
 

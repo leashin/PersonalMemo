@@ -1,4 +1,4 @@
-package com.leashin.quanzi.utils;
+package com.leashin.personalmemo.utils;
 
 import android.util.Log;
 

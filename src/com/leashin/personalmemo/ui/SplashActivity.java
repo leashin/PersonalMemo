@@ -1,8 +1,8 @@
-package com.leashin.quanzi.ui;
+package com.leashin.personalmemo.ui;
 
-import com.leashin.quanzi.R;
-import com.leashin.quanzi.ui.base.BaseActivity;
-import com.leashin.quanzi.ui.main.MainActivity;
+import com.leashin.personalmemo.R;
+import com.leashin.personalmemo.ui.base.BaseActivity;
+import com.leashin.personalmemo.ui.main.MainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
