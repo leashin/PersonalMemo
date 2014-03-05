@@ -14,15 +14,15 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="Theme.Sherlock.Light">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="windowContentOverlay">@drawable/ab_solid_shadow_holo</item>
         <item name="textColorPrimary">@color/primary_text_color</item>
-        <item name="android:windowBackground">@color/default_background_color</item>
         <item name="dropDownListViewStyle">@style/ListViewDropdownStyle</item>
         <item name="android:textColorHint">@color/hint_text_color</item>
         <item name="actionBarStyle">@style/ActionBarStyle</item>
         <item name="windowActionBarOverlay">false</item>
         <item name="popupMenuStyle">@style/MemoryPopupMenuStyle</item>
         <item name="actionBarWidgetTheme">@style/ActionBarTheme</item>
-        <item name="selectableItemBackground">@drawable/action_bar_item_background</item>  
+        <item name="selectableItemBackground">@drawable/ab_item_background</item> 
     </style>
     
     <style name="ListViewDropdownStyle" parent="@android:style/Widget.ListView.DropDown">
@@ -40,8 +40,8 @@
         <item name="android:background">@*android:color/background_light</item>
     </style>
 
-    <style name="ActionBarStyle" parent="Widget.Sherlock.Light.ActionBar">
-        <item name="background">@drawable/ab_solid</item>
+    <style name="ActionBarStyle" parent="Widget.Sherlock.Light.ActionBar.Solid">
+<!--         <item name="background">@drawable/ab_solid</item> -->
          <item name="displayOptions">useLogo|showHome</item>
         <item name="titleTextStyle">@style/ActionBarTitleFont</item>
     </style>

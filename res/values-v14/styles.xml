@@ -14,7 +14,7 @@
         <item name="android:windowActionBarOverlay">false</item>
         <item name="android:popupMenuStyle">@style/MemoryPopupMenuStyle</item>
         <item name="android:actionBarWidgetTheme">@style/ActionBarTheme</item>
-        <item name="android:selectableItemBackground">@drawable/action_bar_item_background</item>  
+        <item name="android:selectableItemBackground">@drawable/ab_item_background</item>  
     </style>
 
 

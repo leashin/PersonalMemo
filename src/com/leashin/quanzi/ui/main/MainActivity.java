@@ -4,50 +4,41 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnMenuSlideListener;
 import com.leashin.quanzi.Const;
 import com.leashin.quanzi.R;
-import com.leashin.quanzi.app.ActionBarDrawerToggle;
-import com.leashin.quanzi.ui.adapter.ChecklistAdapter;
-import com.leashin.quanzi.ui.base.AbsSlidingFragmentActivity;
-import com.leashin.quanzi.ui.base.FragmentIntent;
+import com.leashin.quanzi.app.ActionBarSlidingToggle;
+import com.leashin.quanzi.ui.base.BaseFragmentActivity;
+import com.leashin.quanzi.utils.Logs;
 
-import android.annotation.TargetApi;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AbsSlidingFragmentActivity {
+public class MainActivity extends BaseFragmentActivity {
+	private static final String TAG = "MainActivity";
+	private static final boolean DEBUG = true;
 
 	private SlidingMenu mSlidingMenu;
 	private ActionBar mActionBar;
-	private ActionBarDrawerToggle mActionBarDrawerToggle;
-
-	private ListView mChecklistLv;
+	private ActionBarSlidingToggle mActionBarDrawerToggle;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setBehindContentView(R.layout.slidingmenu_first);
 		setContentView(R.layout.activity_main);
 
-
-		setSlidingActionBarEnabled(false);
+		Fragment f = new OptionListFragment();
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.slidingmenu_options_container, f).commit();
 	}
 
 	@Override
@@ -65,10 +56,10 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		if (mActionBarDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -80,52 +71,45 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 		mActionBar.setDisplayShowTitleEnabled(true);
 	}
 
-	@Override
 	protected void initSlidingMenu() {
-		super.initSlidingMenu();
-
-		mSlidingMenu = getSlidingMenu();
-
-		// 设置基础属性
+		mSlidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+		mSlidingMenu.setMenu(R.layout.slidingmenu_options);
 		mSlidingMenu.setMode(SlidingMenu.LEFT);
-
-		// 设置左边的menu属性
 		mSlidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
 		mSlidingMenu.setShadowDrawable(R.drawable.slidingmenu_shadow_left);
+		mSlidingMenu.setShadowWidthRes(R.dimen.shadow_width);
+		mSlidingMenu.setBehindScrollScale(0.0f);
+		mSlidingMenu.setBackgroundColor(Color.WHITE);
+		mSlidingMenu.setFadeEnabled(true);
+		mSlidingMenu.setFadeDegree(0.35f);
 
-		mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mSlidingMenu,
-				R.drawable.ic_drawer, R.string.app_name, R.string.app_name);
-
-		mSlidingMenu.setOnMenuSlideListener(new OnMenuSlideListener() {
-
+		// 滑动slidemenu时的动画
+		mSlidingMenu.setBehindCanvasTransformer(new CanvasTransformer() {
 			@Override
-			public void onMenuSlide(View view, float slidePercent) {
-				mActionBarDrawerToggle.onDrawerSlide(view, slidePercent);
-				Log.d("slidePercent", "slideOffset = " + slidePercent);
+			public void transformCanvas(Canvas canvas, float percentOpen) {
+				float scale = (float) (percentOpen * 0.25 + 0.75);
+				canvas.scale(scale, scale, canvas.getWidth() / 2,
+						canvas.getHeight() / 2);
 			}
 		});
-		// // 设置右边的menu属性
-		// mSlidingMenu.setSecondaryMenu(R.layout.slidingmenu_secondary);
-		// mSlidingMenu.setSecondaryBehindWidth(PixelUtils.dp2px(160));
-		// mSlidingMenu
-		// .setSecondaryShadowDrawable(R.drawable.slidingmenu_shadow_right);
 	}
 
 	@Override
 	protected void initViews() {
-		mChecklistLv = (ListView) findViewById(R.id.lv_checklist);
-		mChecklistLv.setAdapter(new ChecklistAdapter(this));
+		mSlidingMenu = new SlidingMenu(this);
+		initSlidingMenu();
+		mActionBarDrawerToggle = new ActionBarSlidingToggle(this, mSlidingMenu,
+				R.drawable.ic_drawer, R.string.app_name, R.string.app_name);
+
 	}
 
 	@Override
 	protected void setListeners() {
-		mChecklistLv.setOnItemClickListener(new OnItemClickListener() {
-
+		mSlidingMenu.setOnMenuSlideListener(new OnMenuSlideListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Toast.makeText(MainActivity.this, position + "被点击",
-						Toast.LENGTH_SHORT).show();
+			public void onMenuSlide(View view, float slidePercent) {
+				mActionBarDrawerToggle.onDrawerSlide(view, slidePercent);
+				Logs.d(TAG, "slideOffset = " + slidePercent, DEBUG);
 			}
 		});
 	}
@@ -134,6 +118,11 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 
 	@Override
 	public void onBackPressed() {
+		if (mSlidingMenu.isMenuShowing()) {
+			mSlidingMenu.toggle();
+			return;
+		}
+
 		FragmentManager fm = getSupportFragmentManager();
 
 		if (fm.getBackStackEntryCount() > 0) {
@@ -178,22 +167,17 @@ public class MainActivity extends AbsSlidingFragmentActivity {
 	}
 
 	@Override
-	public void startFragment(FragmentIntent fi) {
-		startFragment(fi, false);
-	}
-
-	@Override
-	public void startFragment(FragmentIntent fi, boolean backToStack) {
+	public void replaceFragment(int containerId, Fragment f, boolean backToStack) {
+		super.replaceFragment(containerId, f, backToStack);
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.replace(R.id.fragment_container, f);
 
-		Fragment newFragment = Fragment.instantiate(this, fi.getFragmentClass()
-				.getName(), fi.getExtras());
-
-		ft.replace(R.id.fragment_container, newFragment);
 		if (backToStack) {
 			ft.addToBackStack(null);
 		}
 
 		ft.commit();
+
+		mSlidingMenu.showContent();
 	}
 }

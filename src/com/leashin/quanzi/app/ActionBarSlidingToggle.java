@@ -54,10 +54,10 @@ import android.view.View;
  * {@link DrawerLayout.DrawerListener}, or if you are already providing your own listener,
  * call through to each of the listener methods from your own.</p>
  */
-public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
+public class ActionBarSlidingToggle implements DrawerLayout.DrawerListener {
 
 	/**
-	 * Allows an implementing Activity to return an {@link ActionBarDrawerToggle.Delegate} to use
+	 * Allows an implementing Activity to return an {@link ActionBarSlidingToggle.Delegate} to use
 	 * with ActionBarDrawerToggle.
 	 */
 	public interface DelegateProvider {
@@ -130,21 +130,21 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 			ActionBarDrawerToggleImpl {
 		@Override
 		public Drawable getThemeUpIndicator(SherlockFragmentActivity activity) {
-			return ActionBarDrawerToggleHoneycomb.getThemeUpIndicator(activity);
+			return ActionBarSlidingToggleSupport.getThemeUpIndicator(activity);
 		}
 
 		@Override
 		public Object setActionBarUpIndicator(Object info,
 				SherlockFragmentActivity activity, Drawable themeImage,
 				int contentDescRes) {
-			return ActionBarDrawerToggleHoneycomb.setActionBarUpIndicator(info,
+			return ActionBarSlidingToggleSupport.setActionBarUpIndicator(info,
 					activity, themeImage, contentDescRes);
 		}
 
 		@Override
 		public Object setActionBarDescription(Object info,
 				SherlockFragmentActivity activity, int contentDescRes) {
-			return ActionBarDrawerToggleHoneycomb.setActionBarDescription(info,
+			return ActionBarSlidingToggleSupport.setActionBarDescription(info,
 					activity, contentDescRes);
 		}
 	}
@@ -199,7 +199,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 	 * @param closeDrawerContentDescRes A String resource to describe the "close drawer" action
 	 *                                  for accessibility
 	 */
-	public ActionBarDrawerToggle(SherlockFragmentActivity activity,
+	public ActionBarSlidingToggle(SherlockFragmentActivity activity,
 			SlidingMenu slidingMenu, int drawerImageRes,
 			int openDrawerContentDescRes, int closeDrawerContentDescRes) {
 		mActivity = activity;

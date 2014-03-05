@@ -1,7 +1,8 @@
 <resources>
 
-    <string name="app_name">私人记事本</string>
+    <string name="app_name">test</string>
     <string name="back_pressed_to_exit">再按一次退出程序</string>
     <string name="back_pressed_to_background">再按一次后台运行</string>
+    <string name="menu_icon">菜单图标</string>
 
 </resources>

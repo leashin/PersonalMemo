@@ -2,25 +2,16 @@ package com.leashin.quanzi.ui.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.leashin.quanzi.R;
-import com.leashin.quanzi.ui.base.AbsFragment;
-import com.leashin.quanzi.ui.base.FragmentCallback;
-import com.leashin.quanzi.ui.base.FragmentIntent;
-import com.leashin.quanzi.utils.Logs;
+import com.leashin.quanzi.ui.base.BaseFragment;
 
-public class TestFragment extends AbsFragment {
-
-	private Button mStartOtherButton;
-	private FragmentCallback mFragmentCallback;
+public class TestFragment extends BaseFragment {
+	private TextView mArgsTv;
 
 	public static TestFragment newInstance(String title) {
 		TestFragment f = new TestFragment();
@@ -35,17 +26,6 @@ public class TestFragment extends AbsFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		if (savedInstanceState == null) {
-			FragmentTransaction ft = getChildFragmentManager()
-					.beginTransaction();
-
-			Fragment newFragment = OtherFragment.newInstance("sdfsf");
-
-			ft.add(R.id.fragment_container, newFragment);
-
-			ft.commit();
-		}
 	}
 
 	@Override
@@ -53,28 +33,21 @@ public class TestFragment extends AbsFragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_test, container, false);
 
-		mStartOtherButton = (Button) v.findViewById(R.id.btn_start_other);
-
-		mStartOtherButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getActivity(), "¿ªÊ¼", Toast.LENGTH_SHORT).show();
-
-				FragmentIntent fi = new FragmentIntent(OtherFragment.class);
-				mFragmentCallback.startFragment(fi, true);
-			}
-		});
-
-		Logs.d("SherlockFragmentLifecycle", this + ": onCreateView");
+		mArgsTv = (TextView) v.findViewById(R.id.tv_title);
 
 		return v;
 	}
 
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		mArgsTv.setText(getArguments().getString("title"));
+	}
+
+	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		mFragmentCallback = (FragmentCallback) activity;
 	}
 
 }

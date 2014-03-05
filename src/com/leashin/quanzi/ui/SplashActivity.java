@@ -1,7 +1,7 @@
 package com.leashin.quanzi.ui;
 
 import com.leashin.quanzi.R;
-import com.leashin.quanzi.ui.base.AbsActivity;
+import com.leashin.quanzi.ui.base.BaseActivity;
 import com.leashin.quanzi.ui.main.MainActivity;
 
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class SplashActivity extends AbsActivity {
+public class SplashActivity extends BaseActivity {
 
 	private static final boolean DEBUG = true;
 

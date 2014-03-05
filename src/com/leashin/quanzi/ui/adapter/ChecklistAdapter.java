@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class ChecklistAdapter extends BaseAdapter {
-	private static final int TEST_COUNT = 20;
+	private static final int TEST_COUNT = 100;
 
 	private Context mContext;
 

@@ -38,7 +38,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
  * this writing, the new API is accessed via reflection here if available.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class ActionBarDrawerToggleHoneycomb {
+public class ActionBarSlidingToggleSupport {
 	private static final String TAG = "ActionBarDrawerToggleHoneycomb";
 
 	private static final int[] THEME_ATTRS = new int[] { android.R.attr.homeAsUpIndicator };

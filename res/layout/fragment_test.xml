@@ -8,19 +8,6 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="haha" />
-
-    <Button
-        android:id="@+id/btn_start_other"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="开始" />
-
-    <FrameLayout
-        android:id="@id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/btn_start_other" />
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

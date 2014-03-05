@@ -2,5 +2,6 @@
 <resources>
 
     <item name="fragment_container" type="id"/>
+    <item name="slidingmenu_options_container" type="id"/>
 
 </resources>

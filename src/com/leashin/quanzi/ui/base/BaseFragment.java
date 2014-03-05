@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.leashin.quanzi.utils.Logs;
 
-public class AbsFragment extends SherlockFragment {
+public class BaseFragment extends SherlockFragment {
 	private static final String LIFECYCLE = "SherlockFragmentLifecycle";
 
 	@Override

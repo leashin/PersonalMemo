@@ -1,12 +1,11 @@
 package com.leashin.quanzi.ui.base;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockActivity;
 import com.leashin.quanzi.utils.Logs;
 
 import android.os.Bundle;
 
-public class AbsFragmentActivity extends SherlockFragmentActivity implements
-		FragmentCallback {
+public class BaseActivity extends SherlockActivity {
 	private static final String LIFECYCLE = "ActivityLifecycle";
 
 	@Override
@@ -69,41 +68,15 @@ public class AbsFragmentActivity extends SherlockFragmentActivity implements
 		setListeners();
 	}
 
-	public AbsFragmentActivity getBaseActivity() {
-		return this;
-	}
-
 	/**
 	 * 初始化view, 不需要自己调用
 	 */
 	protected void initViews() {
-	}
+	};
 
 	/**
 	 * 设置监听器，实现该方法即可，不需要自己調用
 	 */
 	protected void setListeners() {
-	}
-
-	/**
-	 * 在fragment容器启动一个新的fragment
-	 * 
-	 * @param fi
-	 *            startFragment (fi, false)
-	 */
-	@Override
-	public void startFragment(FragmentIntent fi) {
-		startFragment(fi, false);
-	}
-
-	/**
-	 * 
-	 * @param fi
-	 *            类似于Intent
-	 * @param backToStack
-	 *            是否可以加入到fragment栈中
-	 */
-	@Override
-	public void startFragment(FragmentIntent fi, boolean backToStack) {
 	}
 }

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="color" name="common_signin_btn_dark_text_default">@*android:color/white</item>
-    <item type="color" name="common_signin_btn_dark_text_pressed">@*android:color/white</item>
+
+    <item name="common_signin_btn_dark_text_default" type="color">@*android:color/white</item>
+    <item name="common_signin_btn_dark_text_pressed" type="color">@*android:color/white</item>
+
     <color name="common_signin_btn_dark_text_disabled">#ffaaaaaa</color>
-    <item type="color" name="common_signin_btn_dark_text_focused">@*android:color/white</item>
+
+    <item name="common_signin_btn_dark_text_focused" type="color">@*android:color/white</item>
+
     <color name="common_signin_btn_light_text_default">#ff737373</color>
-    <item type="color" name="common_signin_btn_light_text_pressed">@*android:color/white</item>
+
+    <item name="common_signin_btn_light_text_pressed" type="color">@*android:color/white</item>
+
     <color name="common_signin_btn_light_text_disabled">#ffaaaaaa</color>
     <color name="common_signin_btn_light_text_focused">#ff737373</color>
     <color name="common_signin_btn_default_background">#ffdd4b39</color>
@@ -60,8 +66,14 @@
     <color name="location_picker_no_match_text_color">#ff7a7a7a</color>
     <color name="location_picker_suggestion_text_color">#ffa0a0a0</color>
     <color name="action_bar_background_color">#ffdce1e3</color>
-    <item type="color" name="editor_action_bar_text_color">@*android:color/white</item>
-    <color name="pressed_state_color">#BDBDBD</color>
+
+    <item name="editor_action_bar_text_color" type="color">@*android:color/white</item>
+
+    <color name="ab_pressed_state_color">#CFCFCF</color>
+    <color name="option_pressed_state_color">#DFDFDF</color>
+    <color name="option_checked_text_color">#33B5E5</color>
     <color name="reminder_spinner_custom_dropdown_background">#99dddddd</color>
     <color name="note_default_color">#fff5f5f5</color>
+    <color name="divider">@color/option_pressed_state_color</color>
+
 </resources>
