@@ -1,4 +1,4 @@
-package com.leashin.personalmemo.utils;
+package com.leashin.personalmemo.util;
 
 import android.content.Context;
 

@@ -2,7 +2,7 @@ package com.leashin.personalmemo.ui.main;
 
 import com.leashin.personalmemo.R;
 import com.leashin.personalmemo.ui.base.BaseFragmentActivity;
-import com.leashin.personalmemo.utils.Logs;
+import com.leashin.personalmemo.util.Logs;
 import com.leashin.personalmemo.widget.OptionView;
 
 import android.os.Bundle;

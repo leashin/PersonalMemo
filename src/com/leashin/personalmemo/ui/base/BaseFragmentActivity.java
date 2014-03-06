@@ -1,7 +1,7 @@
 package com.leashin.personalmemo.ui.base;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.leashin.personalmemo.utils.Logs;
+import com.leashin.personalmemo.util.Logs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
