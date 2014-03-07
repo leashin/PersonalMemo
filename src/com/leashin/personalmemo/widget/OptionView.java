@@ -1,7 +1,7 @@
 package com.leashin.personalmemo.widget;
 
 import com.leashin.personalmemo.R;
-import com.leashin.personalmemo.util.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -10,7 +10,7 @@ import com.leashin.personalmemo.Const;
 import com.leashin.personalmemo.R;
 import com.leashin.personalmemo.app.ActionBarSlidingToggle;
 import com.leashin.personalmemo.ui.base.BaseFragmentActivity;
-import com.leashin.personalmemo.util.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.content.Context;
 import android.content.SharedPreferences;

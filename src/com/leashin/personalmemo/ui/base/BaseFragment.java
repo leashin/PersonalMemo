@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.leashin.personalmemo.util.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 public class BaseFragment extends SherlockFragment {
 	private static final String LIFECYCLE = "SherlockFragmentLifecycle";

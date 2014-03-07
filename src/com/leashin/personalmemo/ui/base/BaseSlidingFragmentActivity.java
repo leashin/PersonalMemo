@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.leashin.personalmemo.R;
-import com.leashin.personalmemo.util.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 public class BaseSlidingFragmentActivity extends SlidingFragmentActivity {
 	private static final String LIFECYCLE = "SlidingFragmentActivityLifecycle";

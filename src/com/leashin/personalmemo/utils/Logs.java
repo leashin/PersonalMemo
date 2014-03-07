@@ -1,4 +1,4 @@
-package com.leashin.personalmemo.util;
+package com.leashin.personalmemo.utils;
 
 import android.util.Log;
 

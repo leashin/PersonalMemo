@@ -1,7 +1,7 @@
 package com.leashin.personalmemo.ui.base;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.leashin.personalmemo.util.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.os.Bundle;
 

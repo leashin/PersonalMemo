@@ -1,6 +1,6 @@
 package com.leashin.personalmemo;
 
-import com.leashin.personalmemo.util.Logs;
+import com.leashin.personalmemo.utils.Logs;
 
 import android.app.Application;
 
